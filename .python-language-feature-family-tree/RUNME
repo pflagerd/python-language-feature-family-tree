@@ -1,0 +1,8 @@
+#!/bin/bash
+pushd $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) >/dev/null
+
+source ./SETMEUP
+node python-language-feature-family-tree-server.mjs
+
+popd >/dev/null
+

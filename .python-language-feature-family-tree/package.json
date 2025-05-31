@@ -1,0 +1,21 @@
+{
+  "name": "python-language-feature-family-tree-server",
+  "version": "1.0.0",
+  "description": "Local development HTTPS server for python-language-feature-family-tree-server with static file serving and auto-reload.",
+  "type": "module",
+  "main": "python-language-feature-family-tree-server.mjs",
+  "scripts": {
+    "start": "nodemon python-language-feature-family-tree-server.mjs"
+  },
+  "author": "Code GPT",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}

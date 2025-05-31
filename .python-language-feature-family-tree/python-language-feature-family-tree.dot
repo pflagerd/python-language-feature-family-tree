@@ -1,0 +1,65 @@
+strict digraph {
+    bool [label="bool"]
+    binary_integer_literal [label="binary integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=bininteger%20%20%20%3A%3A%3D%20%220%22%20(%22b%22%20%7C%20%22B%22)%20(%5B%22_%22%5D%20bindigit)%2B" target="_blank" fontcolor="blue"]
+    builtin_binary_sequence_type [label="built-in binary sequence type"]
+    builtin_map_type [label="map type"]
+    builtin_literal [label="literal"]
+    builtin_nonscalar_literal [label="non-scalar literal"]
+    builtin_nonscalar_type [label="non-scalar type"]
+    builtin_scalar_literal [label="scalar literal"]
+    builtin_scalar_literal_bool [label="bool literal"]
+    builtin_scalar_literal_numeric [label="numeric literal" href="https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals" target="_blank" fontcolor="blue"]
+    builtin_scalar_literal_numeric_complex [label="complex literal" href="https://docs.python.org/3/reference/lexical_analysis.html#imaginary-literals" target="_blank" fontcolor="blue"]
+    builtin_scalar_literal_numeric_float [label="float literal" href="https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals" target="_blank" fontcolor="blue"]
+    builtin_scalar_literal_numeric_int [label="integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#integer-literals" target="_blank" fontcolor="blue"]
+    builtin_scalar_literal_None [label="None"]
+    builtin_scalar_type [label="scalar type"]
+    builtin_scalar_numeric_type [label="numeric type"]
+    builtin_sequence_type [label="sequence type"]
+    builtin_set_type [label="set type"]
+    builtin_type [label="built-in type"]
+    complex [label="complex"]
+    decimal_integer_literal [label="decimal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=decinteger%20%20%20%3A%3A%3D%20nonzerodigit%20(%5B%22_%22%5D%20digit)*%20%7C%20%220%22%2B%20(%5B%22_%22%5D%20%220%22)*" target="_blank" fontcolor="blue"]
+    float [label="float"]
+    hexadecimal_integer_literal [label="hexadecimal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=hexinteger%20%20%20%3A%3A%3D%20%220%22%20(%22x%22%20%7C%20%22X%22)%20(%5B%22_%22%5D%20hexdigit)%2B" target="_blank" fontcolor="blue"]
+    int [label="int"]
+    NoneType [label="NoneType"]
+    octal_integer_literal [label="octal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=octinteger%20%20%20%3A%3A%3D%20%220%22%20(%22o%22%20%7C%20%22O%22)%20(%5B%22_%22%5D%20octdigit)%2B" target="_blank" fontcolor="blue"]
+
+    builtin_binary_sequence_type -> bytes
+    builtin_binary_sequence_type -> bytearray
+    builtin_binary_sequence_type -> memoryview
+    builtin_hashable_type
+    builtin_literal -> builtin_nonscalar_literal
+    builtin_literal -> builtin_scalar_literal
+    builtin_map_type -> dict
+    builtin_nonscalar_type -> builtin_sequence_type
+    builtin_nonscalar_type -> builtin_sequence_type
+    builtin_nonscalar_type -> builtin_set_type
+    builtin_nonscalar_type -> builtin_map_type
+    builtin_scalar_literal -> builtin_scalar_literal_bool
+    builtin_scalar_literal -> builtin_scalar_literal_numeric
+    builtin_scalar_literal -> builtin_scalar_literal_None
+    builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_complex
+    builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_float
+    builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_int
+    builtin_scalar_literal_numeric_int -> binary_integer_literal
+    builtin_scalar_literal_numeric_int -> decimal_integer_literal
+    builtin_scalar_literal_numeric_int -> hexadecimal_integer_literal
+    builtin_scalar_literal_numeric_int -> octal_integer_literal
+    builtin_scalar_numeric_type -> complex
+    builtin_scalar_numeric_type -> float
+    builtin_scalar_numeric_type -> int
+    builtin_scalar_type -> bool
+    builtin_scalar_type -> builtin_scalar_numeric_type
+    builtin_scalar_type -> NoneType
+    builtin_sequence_type -> list
+    builtin_sequence_type -> range
+    builtin_sequence_type -> str
+    builtin_sequence_type -> tuple
+    builtin_sequence_type -> builtin_binary_sequence_type
+    builtin_set_type -> set
+    builtin_set_type -> frozenset
+    builtin_type -> builtin_scalar_type
+    builtin_type -> builtin_nonscalar_type
+}
