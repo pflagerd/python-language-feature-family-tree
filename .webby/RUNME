@@ -2,7 +2,7 @@
 pushd $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) >/dev/null
 
 source ./SETMEUP
-node index-server.mjs
+npm start
 
 popd >/dev/null
 

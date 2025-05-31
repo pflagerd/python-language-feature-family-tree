@@ -250,7 +250,15 @@
         </div>
     </div>
 
-    <script>
+    <script type="module">
+        import { marked } from './node_modules/marked/lib/marked.esm.js';
+
+        marked.setOptions({
+            breaks: true,     // Convert \n to <br>
+            gfm: true,        // GitHub Flavored Markdown
+            sanitize: false   // Disable HTML sanitization
+        });
+
         class ChatApp {
             constructor() {
                 this.messagesContainer = document.getElementById('messagesContainer');
@@ -309,21 +317,18 @@
             }
 
             async callClaudeAPI(message) {
-                // REPLACE THIS with your actual API endpoint
-                // This is just a mock response for demonstration
-                await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
-                
-                const mockResponses = [
-                    "That's a great question! Let me break it down for you step by step...",
-                    "I'd be happy to help you understand that concept. Here's how I think about it...",
-                    "Excellent! You're asking about something really important. Let me explain...",
-                    "That's a common area where students get confused. Let's work through it together...",
-                    "I can see why that might be puzzling. Here's a way to think about it that might help..."
-                ];
-                
-                return mockResponses[Math.floor(Math.random() * mockResponses.length)] + 
-                       `\n\nYou asked: "${message}"\n\n` +
-                       "This is a mock response. Replace the callClaudeAPI method with your actual API call to get real responses from Claude.";
+                try {
+                    const response = await fetch(`/talk?data=${encodeURIComponent(message)}`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const text = await response.text();
+                    console.log(text);
+                    return text;
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                    return `I encountered an error: ${error}`;
+                }
             }
 
             addMessage(content, sender) {
@@ -336,8 +341,10 @@
                 
                 const messageContent = document.createElement('div');
                 messageContent.className = 'message-content';
-                messageContent.textContent = content;
-                
+                console.log(`content == ${JSON.stringify(content)}`);
+                messageContent.innerHTML = marked(content);
+                console.log(`messageContent.innerHTML == ${JSON.stringify(messageContent.innerHTML)}`);
+
                 if (sender === 'user') {
                     messageDiv.appendChild(messageContent);
                     messageDiv.appendChild(avatar);
