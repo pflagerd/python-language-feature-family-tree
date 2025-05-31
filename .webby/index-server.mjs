@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 app.use(express.static(publicDir));                                                                                     // Standard middleware to serve static files from the chosen directory
 
 const apiKey = process.env.API_KEY;
-const anthropic = new Anthropic({apiKey} );
+const anthropic = new Anthropic({ apiKey } );
 
 const systemPrompt = `You are an expert tutor for the Python programming language. Be encouraging, ask follow-up questions to check understanding, and provide clear explanations with examples.`;
 
