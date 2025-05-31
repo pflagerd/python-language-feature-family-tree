@@ -70,6 +70,8 @@ let conversationHistory = []
 
 
 app.get('/talk', async (req, res) => {
+    console.log(`user says "${req.query.data}"`);
+
     conversationHistory.push({
         role: 'user',
         content: req.query.data,
@@ -84,7 +86,7 @@ app.get('/talk', async (req, res) => {
         });
 
         const tutorResponse = response.content[0].text;
-        console.log(tutorResponse);
+        console.log(`ai says "${tutorResponse}"`);
 
         // Add Claude's response to history
         conversationHistory.push({
