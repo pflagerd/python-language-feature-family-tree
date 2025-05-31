@@ -7,8 +7,10 @@ wget -N https://nodejs.org/dist/v22.16.0/node-v22.16.0-linux-x64.tar.xz
 
 if [ node-v22.16.0-linux-x64.tar.xz -nt node-v22.16.0-linux-x64 ]; then
   rm -rf node-v22.16.0-linux-x64
-  tar xJfm node-v22.16.0-linux-x64.tar.xz
-  ln -sf node-v22.16.0-linux-x64 node
+  tar xJmf node-v22.16.0-linux-x64.tar.xz
+  if ! [ -e node ]; then
+    ln -s node-v22.16.0-linux-x64 node
+  fi
 fi
 
 if ! [ -d node_modules ]; then
