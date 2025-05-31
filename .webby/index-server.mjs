@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import express from 'express';                                                                                         // Imports the Express framework to build the web server.
 import https from 'https';                                                                                             // Built-in Node.js module to create an HTTPS server (as opposed to HTTP).
 import {readFileSync, statSync, existsSync} from 'fs';                                                               // Node.js file system methods for reading files and checking if they exist or are files.
@@ -8,6 +9,7 @@ import {fileURLToPath} from 'url';                                              
 import {dirname} from 'path';                                                                                        // Required in ES modules to get the current file’s directory path.
 import {spawn} from 'child_process';
 import Anthropic from "@anthropic-ai/sdk";
+import { writeFile } from 'fs/promises';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));                                                       // ES module alternative to __dirname. Gets the absolute path of the directory where the current file resides.
 const certDir = join(__dirname, 'cert');                                                                         // certDir: path to the folder where HTTPS certs live
@@ -94,6 +96,8 @@ app.get('/talk', async (req, res) => {
             content: tutorResponse
         });
 
+        await writeFile('data.json', JSON.stringify(conversationHistory, null, 2));
+
         res.type('text/plain').send(tutorResponse);
     } catch (error) {
         throw new Error(`Tutor error: ${error.message}`);
@@ -120,10 +124,14 @@ const triggerReload = () => {
 
 // Watch for file changes
 chokidar.watch(publicDir, {
-    ignoreInitial: true,
+    awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50},
     depth: Infinity,
+    ignored: [
+        '**/.git/**',           // Ignore .git directory
+        '**/data.json'  // Ignore a specific file
+    ],
+    ignoreInitial: true,
     persistent: true,
-    awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50}
 }).on('all', triggerReload);                               // Starts watching the directory and calls triggerReload() on every change (excluding initial scan)
 
 // Launch

@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index-server.mjs",
   "scripts": {
-    "start": "nodemon index-server.mjs"
+    "start": "nodemon --ignore './data.json' index-server.mjs"
   },
   "author": "Code GPT",
   "license": "MIT",
