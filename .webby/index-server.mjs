@@ -11,7 +11,7 @@ import cors from 'cors'
 
 const __dirname = dirname(fileURLToPath(import.meta.url));                                                       // ES module alternative to __dirname. Gets the absolute path of the directory where the current file resides.
 const certDir = join(__dirname, 'cert');                                                                         // certDir: path to the folder where HTTPS certs live
-const PORT = process.env.PORT || 3443;                                                                    // PORT: configurable port with default fallback to 3443
+const PORT = process.env.PORT || 2443;                                                                    // PORT: configurable port with default fallback to 2443
 const debugging = true;                                                                                       // Set this to enable debug logging.
 
 // Parse CLI args for root directory
@@ -54,6 +54,7 @@ app.use((req, res, next) => {
 });
 app.use(express.static(publicDir));                                                                                     // Standard middleware to serve static files from the chosen directory
 
+/*
 app.get('/', async (req, res) => {
   try {
     const filePath = join(__dirname, 'python-language-feature-family-tree.dot');
@@ -63,11 +64,11 @@ app.get('/', async (req, res) => {
     res.status(500).send('Error reading file');
   }
 });
+*/
 
-
-// Start HTTPS pythonLanguageFeatureFamilyTreeServerHttps
-const pythonLanguageFeatureFamilyTreeServerHttps = https.createServer(sslOptions, app);                        // Creates the HTTPS server ...
-const wss = new WebSocketServer({ server: pythonLanguageFeatureFamilyTreeServerHttps });                                    // ... and attaches a WebSocket server to it
+// Start HTTPS httpsServer
+const httpsServer = https.createServer(sslOptions, app);                        // Creates the HTTPS server ...
+const wss = new WebSocketServer({ server: httpsServer });                                    // ... and attaches a WebSocket server to it
 
 // Debounced reload sender
 let reloadTimeout = null;                                                                                          // Watches for file changes and debounces reload messages (prevents spam reloads)
@@ -87,12 +88,12 @@ const triggerReload = () => {
 chokidar.watch(publicDir, { ignoreInitial: true, depth: Infinity, persistent: true, awaitWriteFinish: { stabilityThreshold: 100, pollInterval: 50 } }).on('all', triggerReload);                               // Starts watching the directory and calls triggerReload() on every change (excluding initial scan)
 
 // Launch
-pythonLanguageFeatureFamilyTreeServerHttps.listen(PORT, () => {                                                                      // Starts the server on the given port and logs the address
+httpsServer.listen(PORT, () => {                                                                      // Starts the server on the given port and logs the address
   console.log(`🔐 HTTPS server running at https://localhost:${PORT}`);
 });
 
 //const child = spawn('/home/oy753c/bin/activity-chromium-browser', [`https://localhost:${PORT}/python-language-feature-family-tree.html`], {
-const child = spawn('/usr/bin/chromium-browser', [`https://localhost:${PORT}/python-language-feature-family-tree.html`], {
+const child = spawn('/usr/bin/chromium-browser', [`https://localhost:${PORT}/index.html`], {
   detached: true,
   stdio: 'ignore'  // Ignore all output
 });

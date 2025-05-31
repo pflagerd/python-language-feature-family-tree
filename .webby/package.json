@@ -1,11 +1,11 @@
 {
-  "name": "python-language-feature-family-tree-server",
+  "name": "index-server",
   "version": "1.0.0",
-  "description": "Local development HTTPS server for python-language-feature-family-tree-server with static file serving and auto-reload.",
+  "description": "Local development HTTPS server for index-server with static file serving and auto-reload.",
   "type": "module",
-  "main": "python-language-feature-family-tree-server.mjs",
+  "main": "index-server.mjs",
   "scripts": {
-    "start": "nodemon python-language-feature-family-tree-server.mjs"
+    "start": "nodemon index-server.mjs"
   },
   "author": "Code GPT",
   "license": "MIT",
