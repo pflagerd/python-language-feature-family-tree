@@ -23,7 +23,6 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            max-width: 800px;
             margin: 0 auto;
             width: 100%;
             height: calc(100vh - 80px);
@@ -31,7 +30,7 @@
 
         .chatHeader {
             background: white;
-            padding: 1rem 2rem;
+            padding: 0rem 1rem;
             border-bottom: 1px solid #e5e7eb;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
@@ -42,6 +41,10 @@
             font-weight: 600;
         }
 
+        code {
+            font-size: 1.13em;
+        }
+
         .error-message {
             background-color: #fef2f2;
             border: 1px solid #fecaca;
@@ -49,6 +52,10 @@
             padding: 0.75rem;
             border-radius: 0.5rem;
             margin-top: 0.5rem;
+        }
+
+        h1, h2, h3 {
+            margin: 1rem 0 0;
         }
 
         .inputContainer {
@@ -61,7 +68,6 @@
             display: flex;
             gap: 0.75rem;
             align-items: flex-end;
-            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -100,23 +106,23 @@
             }
         }
 
-        @media (max-width: 768px) {
-            .chatHeader {
-                padding: 1rem;
-            }
+        /*@media (max-width: 768px) {*/
+        /*    .chatHeader {*/
+        /*        padding: 1rem;*/
+        /*    }*/
 
-            .messageContainer {
-                padding: 0.5rem;
-            }
+        /*    .messageContainer {*/
+        /*        padding: 0.5rem;*/
+        /*    }*/
 
-            .messageContent {
-                max-width: 85%;
-            }
+        /*    .messageContent {*/
+        /*        max-width: 85%;*/
+        /*    }*/
 
-            .inputContainer {
-                padding: 0.75rem;
-            }
-        }
+        /*    .inputContainer {*/
+        /*        padding: 0.75rem;*/
+        /*    }*/
+        /*}*/
 
         .message {
             margin-bottom: 1.5rem;
@@ -142,41 +148,9 @@
         }
 
         .messageContent {
-            max-width: 70%;
             padding: 0.3rem 1rem 0.7rem;
             border-radius: 1rem;
             line-height: 1.5;
-        }
-
-        .message.assistant {
-            justify-content: flex-start;
-        }
-
-        .message.assistant .messageAvatar {
-            background-color: #f3f4f6;
-            color: #6b7280;
-        }
-
-        .message.assistant .messageContent {
-            background-color: white;
-            color: #1f2937;
-            border: 1px solid #e5e7eb;
-            border-bottom-left-radius: 0.25rem;
-        }
-
-        .message.user {
-            justify-content: flex-start;
-        }
-
-        .message.user .messageAvatar {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        .message.user .messageContent {
-            background-color: #2563eb;
-            color: white;
-            border-bottom-right-radius: 0.25rem;
         }
 
         .message-input {
@@ -196,6 +170,17 @@
         .message-input:focus {
             border-color: #2563eb;
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        p {
+            margin: 0 0 0.7rem;
+        }
+
+        pre {
+            margin: 0 0 1.0rem;
+            padding: 0.75rem;
+            background: #CCCCCC;
+            overflow-x: auto;
         }
 
         .send-button {
@@ -226,14 +211,7 @@
     </div>
 
     <div class="chatContainer">
-        <div class="messageContainer" id="messageContainer">
-            <div class="messageAssistant">
-                <div class="messageAvatar">Max</div>
-                <div class="messageContent">
-                    Good morning Daniel! Are you ready to continue learning Python syntax?
-                </div>
-            </div>
-        </div>
+        <div class="messageContainer" id="messageContainer"></div>
 
         <div class="inputContainer">
             <div class="inputWrapper">
@@ -267,7 +245,7 @@
                 this.init();
             }
 
-            init() {
+            async init() {
                 this.sendButton.addEventListener('click', () => this.sendMessage());
                 this.messageInput.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' && !e.shiftKey) {
@@ -281,6 +259,26 @@
                     this.messageInput.style.height = 'auto';
                     this.messageInput.style.height = Math.min(this.messageInput.scrollHeight, 120) + 'px';
                 });
+
+                try {
+                    const response = await fetch(`/api/v0.1/restore`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const conversationHistory = await response.json();
+                    console.log(conversationHistory);
+
+                    for (let message of conversationHistory) {
+                        if (message.role === 'user')
+                            this.addMessage(message.content, 'user');
+                        else
+                            this.addMessage(message.content, 'assistant');
+                    }
+
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                    return `I encountered an error: ${error}`;
+                }
             }
 
             async sendMessage() {
@@ -316,7 +314,7 @@
 
             async callClaudeAPI(message) {
                 try {
-                    const response = await fetch(`/talk?data=${encodeURIComponent(message)}`);
+                    const response = await fetch(`/api/v0.1/ask?data=${encodeURIComponent(message)}`);
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }

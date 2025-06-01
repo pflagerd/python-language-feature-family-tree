@@ -9,7 +9,7 @@ import {fileURLToPath} from 'url';                                              
 import {dirname} from 'path';                                                                                        // Required in ES modules to get the current file’s directory path.
 import {spawn} from 'child_process';
 import Anthropic from "@anthropic-ai/sdk";
-import { writeFile } from 'fs/promises';
+import { access, writeFile } from 'fs/promises';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));                                                       // ES module alternative to __dirname. Gets the absolute path of the directory where the current file resides.
 const certDir = join(__dirname, 'cert');                                                                         // certDir: path to the folder where HTTPS certs live
@@ -70,8 +70,28 @@ let conversationHistory = []
 //     }
 // });
 
+app.get('/api/v0.1/restore', async (req, res) => {
+    console.log(`user says "${req.query.data}"`);
 
-app.get('/talk', async (req, res) => {
+    try {
+        await access('data.json');
+        conversationHistory = JSON.parse(readFileSync('data.json', 'utf8'));
+        res.status(200).json(conversationHistory);
+    } catch (error) {
+        if (error.code === 'ENOENT') {
+            conversationHistory.push({
+                role: 'assistant',
+                content: "Good Morning, Daniel!  What would you like to learn about Python today?"
+            });
+
+            await writeFile('data.json', JSON.stringify(conversationHistory, null, 2));
+            res.status(200).json(conversationHistory);
+        }
+        throw error;  // Other errors (permission issues, etc.)
+    }
+});
+
+app.get('/api/v0.1/ask', async (req, res) => {
     console.log(`user says "${req.query.data}"`);
 
     conversationHistory.push({
