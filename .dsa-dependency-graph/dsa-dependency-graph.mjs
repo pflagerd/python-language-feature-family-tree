@@ -33,6 +33,10 @@ const app = express();
 
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.sendFile(join(__dirname, 'index.html'));
+});
+
 // Inject WebSocket script into HTML responses
 app.use((req, res, next) => {
   if (req.accepts('html')) {                                                                                       // Intercepts HTML file requests, defaults / to /index.html
@@ -54,7 +58,7 @@ app.use((req, res, next) => {
 });
 app.use(express.static(publicDir));                                                                                     // Standard middleware to serve static files from the chosen directory
 
-app.get('/', async (req, res) => {
+app.get('/dot', async (req, res) => {
   try {
     const filePath = join(__dirname, 'dsa-dependency-graph.dot');
     const content = readFileSync(filePath, 'utf-8');
@@ -91,8 +95,8 @@ pythonLanguageFeatureFamilyTreeServerHttps.listen(PORT, () => {                 
   console.log(`🔐 HTTPS server running at https://localhost:${PORT}`);
 });
 
-//const child = spawn('/home/oy753c/bin/activity-chromium-browser', [`https://localhost:${PORT}/dsa-dependency-graph.html`], {
-const child = spawn('/usr/bin/chromium-browser', [`https://localhost:${PORT}/dsa-dependency-graph.html`], {
+//const child = spawn('/home/oy753c/bin/activity-chromium-browser', [`https://localhost:${PORT}/index.html`], {
+const child = spawn('/usr/bin/chromium-browser', [`https://localhost:${PORT}/`], {
   detached: true,
   stdio: 'ignore'  // Ignore all output
 });

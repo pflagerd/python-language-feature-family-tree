@@ -62,7 +62,7 @@
 
         async function fetchDotFile() {
             try {
-                const response = await fetch('/'); // Your Express endpoint
+                const response = await fetch('/dot'); // Your Express endpoint
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
