@@ -3,10 +3,6 @@ which chromium-browser || (echo "This application requires chromium-browser to b
 
 pushd $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) >/dev/null
 
-if ! [ -d .dsa-dependency-graph ]; then
-  mkdir .dsa-dependency-graph
-fi
-
 wget -N https://nodejs.org/dist/v22.16.0/node-v22.16.0-linux-x64.tar.xz
 
 if [ node-v22.16.0-linux-x64.tar.xz -nt node-v22.16.0-linux-x64 ]; then
