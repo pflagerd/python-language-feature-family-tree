@@ -2,7 +2,6 @@
 pushd $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) >/dev/null
 
 source ./SETMEUP
-node dsa-dependency-graph.mjs
+node-v22.16.0-linux-x64/nodemon dsa-dependency-graph.mjs
 
 popd >/dev/null
-

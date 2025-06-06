@@ -21,6 +21,7 @@ strict digraph {
     complex [label="complex"]
     decimal_integer_literal [label="decimal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=decinteger%20%20%20%3A%3A%3D%20nonzerodigit%20(%5B%22_%22%5D%20digit)*%20%7C%20%220%22%2B%20(%5B%22_%22%5D%20%220%22)*" target="_blank" fontcolor="blue"]
     float [label="float"]
+    hello_world [label="Hello World" href="HelloWorld/problem.html" target="_blank" fontcolor="blue"]
     hexadecimal_integer_literal [label="hexadecimal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=hexinteger%20%20%20%3A%3A%3D%20%220%22%20(%22x%22%20%7C%20%22X%22)%20(%5B%22_%22%5D%20hexdigit)%2B" target="_blank" fontcolor="blue"]
     int [label="int"]
     NoneType [label="NoneType"]
@@ -29,7 +30,6 @@ strict digraph {
     builtin_binary_sequence_type -> bytes
     builtin_binary_sequence_type -> bytearray
     builtin_binary_sequence_type -> memoryview
-    builtin_hashable_type
     builtin_literal -> builtin_nonscalar_literal
     builtin_literal -> builtin_scalar_literal
     builtin_map_type -> dict
