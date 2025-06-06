@@ -3,8 +3,8 @@ which chromium-browser || (echo "This application requires chromium-browser to b
 
 pushd $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) >/dev/null
 
-if ! [ -d .python-language-feature-family-tree ]; then
-  mkdir .python-language-feature-family-tree
+if ! [ -d .dsa-dependency-graph ]; then
+  mkdir .dsa-dependency-graph
 fi
 
 wget -N https://nodejs.org/dist/v22.16.0/node-v22.16.0-linux-x64.tar.xz

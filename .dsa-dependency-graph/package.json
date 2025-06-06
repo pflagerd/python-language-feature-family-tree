@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Local development HTTPS server for python-language-feature-family-tree-server with static file serving and auto-reload.",
   "type": "module",
-  "main": "python-language-feature-family-tree-server.mjs",
+  "main": "dsa-dependency-graph.mjs",
   "scripts": {
-    "start": "nodemon python-language-feature-family-tree-server.mjs"
+    "start": "nodemon dsa-dependency-graph.mjs"
   },
   "author": "Code GPT",
   "license": "MIT",

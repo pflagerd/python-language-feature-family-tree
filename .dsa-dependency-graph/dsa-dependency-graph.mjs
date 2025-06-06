@@ -56,7 +56,7 @@ app.use(express.static(publicDir));                                             
 
 app.get('/', async (req, res) => {
   try {
-    const filePath = join(__dirname, 'python-language-feature-family-tree.dot');
+    const filePath = join(__dirname, 'dsa-dependency-graph.dot');
     const content = readFileSync(filePath, 'utf-8');
     res.type('text/plain').send(content);
   } catch (error) {
@@ -91,8 +91,8 @@ pythonLanguageFeatureFamilyTreeServerHttps.listen(PORT, () => {                 
   console.log(`🔐 HTTPS server running at https://localhost:${PORT}`);
 });
 
-//const child = spawn('/home/oy753c/bin/activity-chromium-browser', [`https://localhost:${PORT}/python-language-feature-family-tree.html`], {
-const child = spawn('/usr/bin/chromium-browser', [`https://localhost:${PORT}/python-language-feature-family-tree.html`], {
+//const child = spawn('/home/oy753c/bin/activity-chromium-browser', [`https://localhost:${PORT}/dsa-dependency-graph.html`], {
+const child = spawn('/usr/bin/chromium-browser', [`https://localhost:${PORT}/dsa-dependency-graph.html`], {
   detached: true,
   stdio: 'ignore'  // Ignore all output
 });
