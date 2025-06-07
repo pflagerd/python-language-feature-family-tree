@@ -5,6 +5,13 @@ strict digraph {
     builtin_map_type [label="map type"]
     builtin_literal [label="literal"]
     builtin_nonscalar_literal [label="non-scalar literal"]
+    builtin_nonscalar_literal_bytes [label="bytes literal" href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals" target="_blank" fontcolor="blue"]
+    builtin_nonscalar_literal_string [label="string literal" href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals" target="_blank" fontcolor="blue"]
+    builtin_nonscalar_literal_string_short [label="short string literal" href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals" target="_blank" fontcolor="blue"]
+    builtin_nonscalar_literal_string_short_formatted [label="formatted short string literal\nf\"escaped characters {expression}\"\nf'escaped characters {expression}'\nF\"escaped characters {expression}\"\nF'escaped characters {expression}'" href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals" target="_blank" fontcolor="blue"]
+    builtin_nonscalar_literal_string_short_formatted_raw [label="formatted raw short string literal\nfr\"characters\"\nfr'characters'\nFR\"characters\"\nFR'characters'" href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals" target="_blank" fontcolor="blue"]
+    builtin_nonscalar_literal_string_short_raw [label="raw short string literal\n\"characters\"\n'characters'" href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals" target="_blank" fontcolor="blue"]
+    builtin_nonscalar_literal_string_short_unmodified [label="unmodified short string literal\n\"escaped characters\"\n'escaped characters'" href="https://docs.python.org/3/reference/lexical_analysis.html#string-and-bytes-literals" target="_blank" fontcolor="blue"]
     builtin_nonscalar_type [label="non-scalar type"]
     builtin_scalar_literal [label="scalar literal"]
     builtin_scalar_literal_bool [label="bool literal"]
@@ -29,10 +36,25 @@ strict digraph {
     builtin_binary_sequence_type -> bytes
     builtin_binary_sequence_type -> bytearray
     builtin_binary_sequence_type -> memoryview
-    builtin_hashable_type
     builtin_literal -> builtin_nonscalar_literal
     builtin_literal -> builtin_scalar_literal
     builtin_map_type -> dict
+    builtin_nonscalar_literal -> builtin_nonscalar_literal_bytes
+    builtin_nonscalar_literal -> builtin_nonscalar_literal_string
+    builtin_nonscalar_literal_bytes -> builtin_nonscalar_literal_bytes_formatted
+    builtin_nonscalar_literal_bytes -> builtin_nonscalar_literal_bytes_formatted_raw
+    builtin_nonscalar_literal_bytes -> builtin_nonscalar_literal_bytes_raw
+    builtin_nonscalar_literal_bytes -> builtin_nonscalar_literal_bytes_unmodified
+    builtin_nonscalar_literal_string -> builtin_nonscalar_literal_string_long
+    builtin_nonscalar_literal_string -> builtin_nonscalar_literal_string_short
+    builtin_nonscalar_literal_string_short -> builtin_nonscalar_literal_string_short_formatted
+    builtin_nonscalar_literal_string_short -> builtin_nonscalar_literal_string_short_formatted_raw
+    builtin_nonscalar_literal_string_short -> builtin_nonscalar_literal_string_short_raw
+    builtin_nonscalar_literal_string_short -> builtin_nonscalar_literal_string_short_unmodified
+    builtin_nonscalar_literal_string_long -> builtin_nonscalar_literal_string_long_formatted
+    builtin_nonscalar_literal_string_long -> builtin_nonscalar_literal_string_long_formatted_raw
+    builtin_nonscalar_literal_string_long -> builtin_nonscalar_literal_string_long_raw
+    builtin_nonscalar_literal_string_long -> builtin_nonscalar_literal_string_long_unmodified
     builtin_nonscalar_type -> builtin_sequence_type
     builtin_nonscalar_type -> builtin_sequence_type
     builtin_nonscalar_type -> builtin_set_type
