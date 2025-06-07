@@ -33,10 +33,6 @@ const app = express();
 
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'index.html'));
-});
-
 // Inject WebSocket script into HTML responses
 app.use((req, res, next) => {
   if (req.accepts('html')) {                                                                                       // Intercepts HTML file requests, defaults / to /index.html
@@ -58,6 +54,10 @@ app.use((req, res, next) => {
 });
 app.use(express.static(publicDir));                                                                                     // Standard middleware to serve static files from the chosen directory
 
+app.get('/', (req, res) => {
+  res.sendFile(join(__dirname, 'index.html'));
+});
+
 app.get('/dot', async (req, res) => {
   try {
     const filePath = join(__dirname, 'dsa-dependency-graph.dot');
@@ -69,9 +69,9 @@ app.get('/dot', async (req, res) => {
 });
 
 
-// Start HTTPS pythonLanguageFeatureFamilyTreeServerHttps
-const pythonLanguageFeatureFamilyTreeServerHttps = https.createServer(sslOptions, app);                        // Creates the HTTPS server ...
-const wss = new WebSocketServer({ server: pythonLanguageFeatureFamilyTreeServerHttps });                                    // ... and attaches a WebSocket server to it
+// Start HTTPS httpsServer
+const httpsServer = https.createServer(sslOptions, app);                        // Creates the HTTPS server ...
+const wss = new WebSocketServer({ server: httpsServer });                                    // ... and attaches a WebSocket server to it
 
 // Debounced reload sender
 let reloadTimeout = null;                                                                                          // Watches for file changes and debounces reload messages (prevents spam reloads)
@@ -88,10 +88,14 @@ const triggerReload = () => {
 };
 
 // Watch for file changes
-chokidar.watch(publicDir, {ignoreInitial: true, ignored: /node_modules|dsa/, depth: Infinity, persistent: true, awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50}}).on('all', triggerReload);                               // Starts watching the directory and calls triggerReload() on every change (excluding initial scan)
+// Starts watching the directory and calls triggerReload() on every change (excluding initial scan)
+// chokidar.watch(publicDir, {ignoreInitial: true, ignored: /node_modules|dsa/, depth: Infinity, persistent: true, awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50}}).on('all', triggerReload);
+chokidar.watch(publicDir, {ignoreInitial: true, depth: 1, persistent: true, awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50}}).on('all', triggerReload);
+// chokidar.watch('./dsa-dependency-graph.dot').on('all', triggerReload);
+//const watcher = chokidar.watch('./dsa-dependency-graph.dot').on('change', () => console.log('Change detected!'));
 
 // Launch
-pythonLanguageFeatureFamilyTreeServerHttps.listen(PORT, () => {                                                                      // Starts the server on the given port and logs the address
+httpsServer.listen(PORT, () => {                                                                      // Starts the server on the given port and logs the address
   console.log(`🔐 HTTPS server running at https://localhost:${PORT}`);
 });
 
