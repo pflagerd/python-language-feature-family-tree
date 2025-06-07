@@ -1,6 +1,6 @@
 import express from 'express';                                                                                         // Imports the Express framework to build the web server.
 import https from 'https';                                                                                             // Built-in Node.js module to create an HTTPS server (as opposed to HTTP).
-import { readFileSync, statSync, existsSync } from 'fs';                                                               // Node.js file system methods for reading files and checking if they exist or are files.
+import { readFile, readFileSync, statSync, existsSync } from 'fs';                                                               // Node.js file system methods for reading files and checking if they exist or are files.
 import { join } from 'path';                                                                                           // path.join safely joins paths for all operating systems.
 import chokidar from 'chokidar';                                                                                       // A powerful file watcher to detect changes in the file system in real-time.
 import { WebSocketServer } from 'ws';                                                                                  // A WebSocket server using the ws library to push reload commands to connected browsers.
@@ -88,7 +88,7 @@ const triggerReload = () => {
 };
 
 // Watch for file changes
-chokidar.watch(publicDir, { ignoreInitial: true, depth: Infinity, persistent: true, awaitWriteFinish: { stabilityThreshold: 100, pollInterval: 50 } }).on('all', triggerReload);                               // Starts watching the directory and calls triggerReload() on every change (excluding initial scan)
+chokidar.watch(publicDir, {ignoreInitial: true, ignored: /node_modules|dsa/, depth: Infinity, persistent: true, awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50}}).on('all', triggerReload);                               // Starts watching the directory and calls triggerReload() on every change (excluding initial scan)
 
 // Launch
 pythonLanguageFeatureFamilyTreeServerHttps.listen(PORT, () => {                                                                      // Starts the server on the given port and logs the address
