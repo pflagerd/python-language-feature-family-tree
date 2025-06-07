@@ -1,97 +1,72 @@
+#
+# An edge goes from A to B.
+# The edge and its nodes may be read as "You must know A before you can do B".
+# So <code>builtin_function_print -> HelloWorld</code> may be read "You must know (the print() built-in function) before you can do (HelloWorld)
+#
+#
 strict digraph {
-#    bool [label="bool"]
-#    binary_integer_literal [label="binary integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=bininteger%20%20%20%3A%3A%3D%20%220%22%20(%22b%22%20%7C%20%22B%22)%20(%5B%22_%22%5D%20bindigit)%2B" target="_blank" fontcolor="blue"]
-    builtin_binary_sequence_type [label="built-in binary sequence type"]
-    builtin_class_list_constructor [label="class list([iterable])" href="https://docs.python.org/3/library/stdtypes.html#list" target="_blank" fontcolor="blue"]
+#    construct_list_from_iterable [label="variable([iterable])" href="https://docs.python.org/3/library/stdtypes.html#list" target="_blank" fontcolor="blue"]
+    construct_list_from_string [label="constuct list from string\nlist(some_string)" href="https://docs.python.org/3/library/stdtypes.html#list" target="_blank" fontcolor="blue"]
     builtin_function_print [label="print()" href="https://docs.python.org/3/library/stdtypes.html#list" target="_blank" fontcolor="blue"]
-    builtin_literal [label="literal"]
-    builtin_map_type [label="map type"]
-    builtin_nonscalar_literal [label="non-scalar literal"]
-    builtin_nonscalar_literal_string [label="string literal"]
-    builtin_nonscalar_type [label="non-scalar type"]
-    builtin_scalar_literal [label="scalar literal"]
-    builtin_scalar_literal_bool [label="bool literal"]
-    builtin_scalar_literal_numeric [label="numeric literal" href="https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals" target="_blank" fontcolor="blue"]
-    builtin_scalar_literal_numeric_complex [label="complex literal" href="https://docs.python.org/3/reference/lexical_analysis.html#imaginary-literals" target="_blank" fontcolor="blue"]
-    builtin_scalar_literal_numeric_float [label="float literal" href="https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals" target="_blank" fontcolor="blue"]
-    builtin_scalar_literal_numeric_int [label="integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#integer-literals" target="_blank" fontcolor="blue"]
-    builtin_scalar_literal_None [label="None"]
-    builtin_scalar_type [label="scalar type"]
-    builtin_scalar_numeric_type [label="numeric type"]
-    builtin_sequence_type [label="sequence type"]
-    builtin_set_type [label="set type"]
-    builtin_type [label="built-in type"]
-    ConvertStringToList [label="Convert a String to a List" href="https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals" target="_blank" fontcolor="blue"]
-    complex [label="complex"]
-#    decimal_integer_literal [label="decimal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=decinteger%20%20%20%3A%3A%3D%20nonzerodigit%20(%5B%22_%22%5D%20digit)*%20%7C%20%220%22%2B%20(%5B%22_%22%5D%20%220%22)*" target="_blank" fontcolor="blue"]
+    integer_variable [label="use integer variable" href="" target="_blank" fontcolor="blue"]
+    builtin_nonscalar_literal_unmodified_string [label="construct a simple string literal\n\n'escaped characters' or\n\"escaped characters\""]
+#    builtin_scalar_literal_bool [label="bool literal"]
+#    builtin_scalar_literal_numeric_float [label="float literal" href="https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals" target="_blank" fontcolor="blue"]
+#    builtin_scalar_literal_numeric_int [label="integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#integer-literals" target="_blank" fontcolor="blue"]
+#    builtin_scalar_literal_None [label="None"]
+#    builtin_map_type [label="map"]
+#    builtin_set_type [label="set"]
+    BubbleSort
+    ConvertStringToList [label="Convert a String to a list" href="https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals" target="_blank" fontcolor="blue"]
+#    complex [label="complex"]
     DeleteFewestCharactersFromStringToGetPalindrome [label="Delete the Fewest Characters from a string to get a palindrome" href="./dsa/DeleteFewestCharactersFromStringToGetPalindrome" target="_blank" fontcolor="blue"]
-    float [label="float"]
+#    float [label="float"]
     FindTheMinimum [label="Find The Minimum Value in an Array" href="./dsa/FindTheMinimum/problem.html" target="_blank" fontcolor="blue"]
     FindTripletsSummingToZero [label="Find Triplets Summing To Zero" href="./dsa/FindTripletsSummingToZero/problem.html" target="_blank" fontcolor="blue"]
-    hello_world [label="Hello World" href="HelloWorld/problem.html" target="_blank" fontcolor="blue"]
-#    hexadecimal_integer_literal [label="hexadecimal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=hexinteger%20%20%20%3A%3A%3D%20%220%22%20(%22x%22%20%7C%20%22X%22)%20(%5B%22_%22%5D%20hexdigit)%2B" target="_blank" fontcolor="blue"]
-    int [label="int"]
+    HelloWorld [label="Hello World" href="HelloWorld/problem.html" target="_blank" fontcolor="blue"]
+    integer_indexing [label="index nonscalar with integer\nnonscalar[i]" href="" target="_blank" fontcolor="blue"]
     IsTheStringAPalindrome [label="Is the string a palindrome" href="./dsa/IsTheStringAPalindrome/problem.html" target="_blank" fontcolor="blue"]
     IsTheStringAPalindromeIgnoringCaseAndWhiteSpace [label="Is the string a palindrome ignoring case and whitespace" href="./dsa/IsTheStringAPalindromeIgnoringCaseAndWhiteSpace/problem.html" target="_blank" fontcolor="blue"]
-    NoneType [label="NoneType"]
-#    octal_integer_literal [label="octal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=octinteger%20%20%20%3A%3A%3D%20%220%22%20(%22o%22%20%7C%20%22O%22)%20(%5B%22_%22%5D%20octdigit)%2B" target="_blank" fontcolor="blue"]
+    list_integer_indexing [label="index list with integer\nsome_list[i]" href="" target="_blank" fontcolor="blue"]
+    list_variable [label="use list variable" href="" target="_blank" fontcolor="blue"]
+    one_pointer_techniques [label="One Pointer Techniques" href="" target="_blank" fontcolor="blue"]
     PairWithGivenSumInASortedArray [label="Pair with given sum in a sorted array" href="./dsa/PairWithGivenSumInASortedArray/problem.html" target="_blank" fontcolor="blue"]
+    pointers_move_in_opposite_directions [label="Pointers move in opposite directions" href="" target="_blank" fontcolor="blue"]
     ReverseTheArray [label="Reverse The Array" href="./dsa/ReverseTheArray/problem.html" target="_blank" fontcolor="blue"]
     ReverseTheString [label="Reverse The String" href="./dsa/ReverseTheString/problem.html" target="_blank" fontcolor="blue"]
     SwapTwoVariables [label="Swap Two Variables" href="./dsa/SwapTwoVariables/problem.html" target="_blank" fontcolor="blue"]
+    string_integer_indexing [label="index string with integer\nsome_string[i]" href="" target="_blank" fontcolor="blue"]
+    string_variable [label="use string variable" href="" target="_blank" fontcolor="blue"]
+    two_pointer_techniques [label="Two Pointer Techniques" href="" target="_blank" fontcolor="blue"]
 
-    builtin_binary_sequence_type -> bytes
-    builtin_binary_sequence_type -> bytearray
-    builtin_binary_sequence_type -> memoryview
-    builtin_class_list_constructor -> list
-    builtin_class_list_constructor -> ConvertStringToList
-    builtin_function_print -> hello_world
-    builtin_literal -> builtin_nonscalar_literal
-    builtin_literal -> builtin_scalar_literal
-    builtin_map_type -> dict
-    builtin_nonscalar_type -> builtin_sequence_type
-    builtin_nonscalar_type -> builtin_sequence_type
-    builtin_nonscalar_type -> builtin_set_type
-    builtin_nonscalar_type -> builtin_map_type
-    builtin_nonscalar_literal -> builtin_nonscalar_literal_string
-    builtin_nonscalar_literal_string -> builtin_class_list_constructor
-    builtin_nonscalar_literal_string -> DeleteFewestCharactersFromStringToGetPalindrome
-    builtin_nonscalar_literal_string -> hello_world
-    builtin_nonscalar_literal_string -> IsTheStringAPalindrome
-    builtin_scalar_literal -> builtin_scalar_literal_bool
-    builtin_scalar_literal -> builtin_scalar_literal_numeric
-    builtin_scalar_literal -> builtin_scalar_literal_None
-    builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_complex
-    builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_float
-    builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_int
-#    builtin_scalar_literal_numeric_int -> binary_integer_literal
-#    builtin_scalar_literal_numeric_int -> decimal_integer_literal
-#    builtin_scalar_literal_numeric_int -> hexadecimal_integer_literal
-#    builtin_scalar_literal_numeric_int -> octal_integer_literal
-    builtin_scalar_numeric_type -> complex
-    builtin_scalar_numeric_type -> float
-    builtin_scalar_numeric_type -> int
-#    builtin_scalar_type -> bool
-    builtin_scalar_type -> builtin_scalar_numeric_type
-    builtin_scalar_type -> NoneType
-    builtin_sequence_type -> list
-#    builtin_sequence_type -> range
-    builtin_sequence_type -> str
-    builtin_sequence_type -> tuple
-    builtin_sequence_type -> builtin_binary_sequence_type
-    builtin_set_type -> set
-#    builtin_set_type -> frozenset
-    builtin_type -> builtin_scalar_type
-    builtin_type -> builtin_nonscalar_type
+    construct_list_from_string -> ConvertStringToList
+    builtin_function_print -> HelloWorld
+    builtin_nonscalar_literal_unmodified_string -> HelloWorld
     ConvertStringToList -> DeleteFewestCharactersFromStringToGetPalindrome
     ConvertStringToList -> ReverseTheString
-    int -> SwapTwoVariables
-    IsTheStringAPalindrome -> ReverseTheArray
-    IsTheStringAPalindrome -> ReverseTheString
+    integer_indexing -> one_pointer_techniques
+    integer_indexing -> two_pointer_techniques
+    integer_indexing -> two_pointer_techniques
+    integer_indexing -> DeleteFewestCharactersFromStringToGetPalindrome
+    integer_indexing -> FindTripletsSummingToZero
+    integer_variable -> integer_indexing
+    integer_variable -> list_integer_indexing
+    integer_variable -> string_integer_indexing
+    integer_variable -> SwapTwoVariables
     IsTheStringAPalindrome -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
-    list -> DeleteFewestCharactersFromStringToGetPalindrome
-    list -> FindTheMinimum
-    list -> FindTripletsSummingToZero
+    list_variable -> construct_list_from_string
+    list_variable -> list_integer_indexing
+    list_integer_indexing -> integer_indexing
+    list_integer_indexing -> one_pointer_techniques
+    list_integer_indexing -> integer_indexing
+    one_pointer_techniques -> FindTheMinimum
+    one_pointer_techniques -> BubbleSort
+    pointers_move_in_opposite_directions -> IsTheStringAPalindrome
+    pointers_move_in_opposite_directions -> ReverseTheArray
+    pointers_move_in_opposite_directions -> ReverseTheString
+    string_integer_indexing -> integer_indexing
+    string_variable -> string_integer_indexing
     SwapTwoVariables -> ReverseTheArray
     SwapTwoVariables -> ReverseTheString
+    two_pointer_techniques -> pointers_move_in_opposite_directions
 }
