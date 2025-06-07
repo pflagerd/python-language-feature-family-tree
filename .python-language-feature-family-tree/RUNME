@@ -2,7 +2,7 @@
 pushd $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) >/dev/null
 
 source ./SETMEUP
-node python-language-feature-family-tree-server.mjs
+node-v22.16.0-linux-x64/bin/nodemon python-language-feature-family-tree-server.mjs
 
 popd >/dev/null
 

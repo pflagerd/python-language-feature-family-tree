@@ -3,22 +3,22 @@ which chromium-browser || (echo "This application requires chromium-browser to b
 
 pushd $(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) >/dev/null
 
-if ! [ -d .python-language-feature-family-tree ]; then
-  mkdir .python-language-feature-family-tree
-fi
-
 wget -N https://nodejs.org/dist/v22.16.0/node-v22.16.0-linux-x64.tar.xz
 
 if [ node-v22.16.0-linux-x64.tar.xz -nt node-v22.16.0-linux-x64 ]; then
   rm -rf node-v22.16.0-linux-x64
   tar xJmf node-v22.16.0-linux-x64.tar.xz
-  if ! [ -e node ]; then
+  if ! [ -e node ]; then # Not sure I need this any more if I use node-v22.16.0-linux-x64 directly
     ln -s node-v22.16.0-linux-x64 node
   fi
 fi
 
 if ! [ -d node_modules ]; then
-  node/bin/npm install
+  node-v22.16.0-linux-x64/bin/npm install
+fi
+
+if [ ! -x node-v22.16.0-linux-x64/bin/nodemon ]; then
+  node-v22.16.0-linux-x64/bin/npm install -g nodemon --prefix $(realpath node-v22.16.0-linux-x64)
 fi
 
 popd >/dev/null
