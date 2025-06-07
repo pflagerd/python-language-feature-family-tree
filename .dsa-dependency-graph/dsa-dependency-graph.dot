@@ -5,6 +5,7 @@ strict digraph {
     builtin_map_type [label="map type"]
     builtin_literal [label="literal"]
     builtin_nonscalar_literal [label="non-scalar literal"]
+    builtin_nonscalar_literal_string [label="string literal"]
     builtin_nonscalar_type [label="non-scalar type"]
     builtin_scalar_literal [label="scalar literal"]
     builtin_scalar_literal_bool [label="bool literal"]
@@ -20,12 +21,19 @@ strict digraph {
     builtin_type [label="built-in type"]
     complex [label="complex"]
     decimal_integer_literal [label="decimal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=decinteger%20%20%20%3A%3A%3D%20nonzerodigit%20(%5B%22_%22%5D%20digit)*%20%7C%20%220%22%2B%20(%5B%22_%22%5D%20%220%22)*" target="_blank" fontcolor="blue"]
+    DeleteFewestCharactersFromStringToGetPalindrome [label="Delete the Fewest Characters from a string to get a palindrome" href="./dsa/DeleteFewestCharactersFromStringToGetPalindrome" target="_blank" fontcolor="blue"]
     float [label="float"]
+    FindTheMinimum [label="Find The Minimum Value in an Array" href="./dsa/FindTheMinimum/problem.html" target="_blank" fontcolor="blue"]
+    FindTripletsSummingToZero [label="Find Triplets Summing To Zero" href="./dsa/FindTripletsSummingToZero/problem.html" target="_blank" fontcolor="blue"]
     hello_world [label="Hello World" href="HelloWorld/problem.html" target="_blank" fontcolor="blue"]
     hexadecimal_integer_literal [label="hexadecimal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=hexinteger%20%20%20%3A%3A%3D%20%220%22%20(%22x%22%20%7C%20%22X%22)%20(%5B%22_%22%5D%20hexdigit)%2B" target="_blank" fontcolor="blue"]
     int [label="int"]
+    IsTheStringAPalindrome [label="Is the string a palindrome" href="./dsa/IsTheStringAPalindrome/problem.html" target="_blank" fontcolor="blue"]
     NoneType [label="NoneType"]
     octal_integer_literal [label="octal integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=octinteger%20%20%20%3A%3A%3D%20%220%22%20(%22o%22%20%7C%20%22O%22)%20(%5B%22_%22%5D%20octdigit)%2B" target="_blank" fontcolor="blue"]
+    ReverseTheArray [label="Reverse The Array" href="./dsa/ReverseTheArray/problem.html" target="_blank" fontcolor="blue"]
+    ReverseTheString [label="Reverse The String" href="./dsa/ReverseTheString/problem.html" target="_blank" fontcolor="blue"]
+    SwapTwoVariables [label="Swap Two Variables" href="./dsa/SwapTwoVariables/problem.html" target="_blank" fontcolor="blue"]
 
     builtin_binary_sequence_type -> bytes
     builtin_binary_sequence_type -> bytearray
@@ -37,6 +45,7 @@ strict digraph {
     builtin_nonscalar_type -> builtin_sequence_type
     builtin_nonscalar_type -> builtin_set_type
     builtin_nonscalar_type -> builtin_map_type
+    builtin_nonscalar_literal -> builtin_nonscalar_literal_string
     builtin_scalar_literal -> builtin_scalar_literal_bool
     builtin_scalar_literal -> builtin_scalar_literal_numeric
     builtin_scalar_literal -> builtin_scalar_literal_None
@@ -62,4 +71,8 @@ strict digraph {
     builtin_set_type -> frozenset
     builtin_type -> builtin_scalar_type
     builtin_type -> builtin_nonscalar_type
+    IsTheStringAPalindrome -> ReverseTheArray
+    IsTheStringAPalindrome -> ReverseTheString
+    SwapTwoVariables -> ReverseTheArray
+    SwapTwoVariables -> ReverseTheString
 }
