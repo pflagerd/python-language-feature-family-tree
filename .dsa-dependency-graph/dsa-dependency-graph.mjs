@@ -89,10 +89,8 @@ const triggerReload = () => {
 
 // Watch for file changes
 // Starts watching the directory and calls triggerReload() on every change (excluding initial scan)
-// chokidar.watch(publicDir, {ignoreInitial: true, ignored: /node_modules|dsa/, depth: Infinity, persistent: true, awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50}}).on('all', triggerReload);
-chokidar.watch(publicDir, {ignoreInitial: true, depth: 1, persistent: true, awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50}}).on('all', triggerReload);
-// chokidar.watch('./dsa-dependency-graph.dot').on('all', triggerReload);
-//const watcher = chokidar.watch('./dsa-dependency-graph.dot').on('change', () => console.log('Change detected!'));
+// Ignoring dsa with a regular expression causes chokidar to stop working altogether. e.g. ignored: /dsa/
+chokidar.watch(publicDir, {ignoreInitial: true, ignored: /node_modules/, depth: 1, persistent: true, awaitWriteFinish: {stabilityThreshold: 100, pollInterval: 50}}).on('all', triggerReload);
 
 // Launch
 httpsServer.listen(PORT, () => {                                                                      // Starts the server on the given port and logs the address

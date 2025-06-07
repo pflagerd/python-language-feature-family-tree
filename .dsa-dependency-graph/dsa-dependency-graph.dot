@@ -1,6 +1,6 @@
 strict digraph {
-    bool [label="bool"]
-    binary_integer_literal [label="binary integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=bininteger%20%20%20%3A%3A%3D%20%220%22%20(%22b%22%20%7C%20%22B%22)%20(%5B%22_%22%5D%20bindigit)%2B" target="_blank" fontcolor="blue"]
+#    bool [label="bool"]
+#    binary_integer_literal [label="binary integer literal" href="https://docs.python.org/3/reference/lexical_analysis.html#:~:text=bininteger%20%20%20%3A%3A%3D%20%220%22%20(%22b%22%20%7C%20%22B%22)%20(%5B%22_%22%5D%20bindigit)%2B" target="_blank" fontcolor="blue"]
     builtin_binary_sequence_type [label="built-in binary sequence type"]
     builtin_class_list_constructor [label="class list([iterable])" href="https://docs.python.org/3/library/stdtypes.html#list" target="_blank" fontcolor="blue"]
     builtin_function_print [label="print()" href="https://docs.python.org/3/library/stdtypes.html#list" target="_blank" fontcolor="blue"]
@@ -64,14 +64,14 @@ strict digraph {
     builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_complex
     builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_float
     builtin_scalar_literal_numeric -> builtin_scalar_literal_numeric_int
-    builtin_scalar_literal_numeric_int -> binary_integer_literal
+#    builtin_scalar_literal_numeric_int -> binary_integer_literal
 #    builtin_scalar_literal_numeric_int -> decimal_integer_literal
 #    builtin_scalar_literal_numeric_int -> hexadecimal_integer_literal
 #    builtin_scalar_literal_numeric_int -> octal_integer_literal
     builtin_scalar_numeric_type -> complex
     builtin_scalar_numeric_type -> float
     builtin_scalar_numeric_type -> int
-    builtin_scalar_type -> bool
+#    builtin_scalar_type -> bool
     builtin_scalar_type -> builtin_scalar_numeric_type
     builtin_scalar_type -> NoneType
     builtin_sequence_type -> list
@@ -80,7 +80,7 @@ strict digraph {
     builtin_sequence_type -> tuple
     builtin_sequence_type -> builtin_binary_sequence_type
     builtin_set_type -> set
-    builtin_set_type -> frozenset
+#    builtin_set_type -> frozenset
     builtin_type -> builtin_scalar_type
     builtin_type -> builtin_nonscalar_type
     ConvertStringToList -> DeleteFewestCharactersFromStringToGetPalindrome
