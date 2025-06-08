@@ -27,6 +27,7 @@ strict digraph {
     integer_indexing [label="index nonscalar with integer\nnonscalar[i]" href="" target="_blank" fontcolor="blue"]
     IsTheStringAPalindrome [label="Is the string a palindrome" href="./dsa/IsTheStringAPalindrome/problem.html" target="_blank" fontcolor="blue"]
     IsTheStringAPalindromeIgnoringCaseAndWhiteSpace [label="Is the string a palindrome ignoring case and whitespace" href="./dsa/IsTheStringAPalindromeIgnoringCaseAndWhiteSpace/problem.html" target="_blank" fontcolor="blue"]
+    IsTheStringAPalindromeIgnoringNonAlphanumeric [label="Is the string a palindrome ignoring non-alphameric characters" href="./dsa/IsTheStringAPalindromeIgnoringNonAlphaNumeric/problem.html" target="_blank" fontcolor="blue"]
     list_integer_indexing [label="index list with integer\nsome_list[i]" href="" target="_blank" fontcolor="blue"]
     list_variable [label="use list variable" href="" target="_blank" fontcolor="blue"]
     one_pointer_techniques [label="One Pointer Techniques" href="" target="_blank" fontcolor="blue"]
@@ -35,6 +36,9 @@ strict digraph {
     ReverseTheArray [label="Reverse The Array" href="./dsa/ReverseTheArray/problem.html" target="_blank" fontcolor="blue"]
     ReverseTheString [label="Reverse The String" href="./dsa/ReverseTheString/problem.html" target="_blank" fontcolor="blue"]
     SwapTwoVariables [label="Swap Two Variables" href="./dsa/SwapTwoVariables/problem.html" target="_blank" fontcolor="blue"]
+    string_dot_isalpha [label="string.isalpha()" href="" target="_blank" fontcolor="blue"]
+    string_dot_isalnum [label="string.isalnum()" href="" target="_blank" fontcolor="blue"]
+    string_dot_lower [label="string.lower()" href="" target="_blank" fontcolor="blue"]
     string_integer_indexing [label="index string with integer\nsome_string[i]" href="" target="_blank" fontcolor="blue"]
     string_variable [label="use string variable" href="" target="_blank" fontcolor="blue"]
     two_pointer_techniques [label="Two Pointer Techniques" href="" target="_blank" fontcolor="blue"]
@@ -54,6 +58,7 @@ strict digraph {
     integer_variable -> string_integer_indexing
     integer_variable -> SwapTwoVariables
     IsTheStringAPalindrome -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
+    IsTheStringAPalindrome -> IsTheStringAPalindromeIgnoringNonAlphanumeric
     list_variable -> construct_list_from_string
     list_variable -> list_integer_indexing
     list_integer_indexing -> integer_indexing
@@ -63,6 +68,9 @@ strict digraph {
     pointers_move_in_opposite_directions -> IsTheStringAPalindrome
     pointers_move_in_opposite_directions -> ReverseTheArray
     pointers_move_in_opposite_directions -> ReverseTheString
+    string_dot_isalpha -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
+    string_dot_lower -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
+    string_dot_isalnum -> IsTheStringAPalindromeIgnoringNonAlphanumeric
     string_integer_indexing -> integer_indexing
     string_variable -> string_integer_indexing
     SwapTwoVariables -> ReverseTheArray
