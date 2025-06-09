@@ -22,17 +22,17 @@ strict digraph {
     DeleteFewestCharactersFromStringToGetPalindrome [label="Delete the Fewest Characters from a string to get a palindrome" href="./dsa/DeleteFewestCharactersFromStringToGetPalindrome" target="_blank" fontcolor="blue"]
 #    float [label="float"]
     FindTheMinimum [label="Find The Minimum Value in an Array" href="./dsa/FindTheMinimum/problem.html" target="_blank" fontcolor="blue"]
-    FindTripletsSummingToZero [label="Find Triplets Summing To Zero" href="./dsa/FindTripletsSummingToZero/problem.html" target="_blank" fontcolor="blue"]
+    FindTripletsSummingToZeroInArrayOfNonUniqueIntegers [label="Find Triplets Summing To Zero" href="./dsa/FindTripletsSummingToZero/problem.html" target="_blank" fontcolor="blue"]
     HelloWorld [label="Hello World" href="HelloWorld/problem.html" target="_blank" fontcolor="blue"]
     integer_indexing [label="index nonscalar with integer\nnonscalar[i]" href="" target="_blank" fontcolor="blue"]
     IsTheStringAPalindrome [label="Is the string a palindrome" href="./dsa/IsTheStringAPalindrome/problem.html" target="_blank" fontcolor="blue"]
     IsTheStringAPalindromeIgnoringCaseAndWhiteSpace [label="Is the string a palindrome ignoring case and whitespace" href="./dsa/IsTheStringAPalindromeIgnoringCaseAndWhiteSpace/problem.html" target="_blank" fontcolor="blue"]
-    IsTheStringAPalindromeIgnoringNonAlphanumeric [label="Is the string a palindrome ignoring non-alphanumeric characters" href="./dsa/IsTheStringAPalindromeIgnoringNonAlphaNumeric/problem.html" target="_blank" fontcolor="blue"]
+    one_IsTheStringAPalindromeIgnoringCaseAndNonAlphanumeric [label="Is the string a palindrome ignoring non-alphanumeric characters" href="./dsa/one_IsTheStringAPalindromeIgnoringCaseAndNonAlphanumeric/problem.html" target="_blank" fontcolor="blue"]
     list_integer_indexing [label="index list with integer\nsome_list[i]" href="" target="_blank" fontcolor="blue"]
     list_variable [label="use list variable" href="" target="_blank" fontcolor="blue"]
     one_pointer_techniques [label="One Pointer Techniques" href="" target="_blank" fontcolor="blue"]
-    PairWithGivenSumInASortedArrayNonUniqueElements [label="Pair with given sum in a sorted array with non unique elements" href="./dsa/PairWithGivenSumInASortedArrayNonUniqueElements/problem.html" target="_blank" fontcolor="blue"]
-    PairWithGivenSumInASortedArrayUniqueElements [label="Pair with given sum in a sorted array with unique elements" href="./dsa/PairWithGivenSumInASortedArrayUniqueElements/problem.html" target="_blank" fontcolor="blue"]
+    PairWithGivenSumInASortedArrayOfNonUniqueIntegers [label="Pair with given sum in a sorted array with non unique elements" href="./dsa/PairWithGivenSumInASortedArrayOfNonUniqueIntegers/problem.html" target="_blank" fontcolor="blue"]
+    PairWithGivenSumInASortedArrayOfUniqueIntegers [label="Pair with given sum in a sorted array with unique elements" href="./dsa/PairWithGivenSumInASortedArrayOfUniqueIntegers/problem.html" target="_blank" fontcolor="blue"]
     pointers_move_in_opposite_directions [label="Pointers move in opposite directions" href="" target="_blank" fontcolor="blue"]
     ReverseTheArray [label="Reverse The Array" href="./dsa/ReverseTheArray/problem.html" target="_blank" fontcolor="blue"]
     ReverseTheString [label="Reverse The String" href="./dsa/ReverseTheString/problem.html" target="_blank" fontcolor="blue"]
@@ -58,26 +58,27 @@ strict digraph {
     integer_variable -> string_integer_indexing
     integer_variable -> SwapTwoVariables
     IsTheStringAPalindrome -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
-    IsTheStringAPalindrome -> IsTheStringAPalindromeIgnoringNonAlphanumeric
+    IsTheStringAPalindrome -> one_IsTheStringAPalindromeIgnoringCaseAndNonAlphanumeric
     list_variable -> construct_list_from_string
     list_variable -> list_integer_indexing
     list_integer_indexing -> integer_indexing
     list_integer_indexing -> integer_indexing
     one_pointer_techniques -> BubbleSort
     one_pointer_techniques -> FindTheMinimum
-    one_pointer_techniques -> FindTripletsSummingToZero
-    PairWithGivenSumInASortedArrayNonUniqueElements -> FindTripletsSummingToZero
+    one_pointer_techniques -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
+    PairWithGivenSumInASortedArrayOfNonUniqueIntegers -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
     pointers_move_in_opposite_directions -> IsTheStringAPalindrome
     pointers_move_in_opposite_directions -> ReverseTheArray
     pointers_move_in_opposite_directions -> ReverseTheString
     string_dot_isalpha -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
     string_dot_lower -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
-    string_dot_isalnum -> IsTheStringAPalindromeIgnoringNonAlphanumeric
+    string_dot_lower -> one_IsTheStringAPalindromeIgnoringCaseAndNonAlphanumeric
+    string_dot_isalnum -> one_IsTheStringAPalindromeIgnoringCaseAndNonAlphanumeric
     string_integer_indexing -> integer_indexing
     string_variable -> string_integer_indexing
     SwapTwoVariables -> ReverseTheArray
     SwapTwoVariables -> ReverseTheString
     two_pointer_techniques -> pointers_move_in_opposite_directions
-    two_pointer_techniques -> PairWithGivenSumInASortedArrayUniqueElements
-    two_pointer_techniques -> PairWithGivenSumInASortedArrayNonUniqueElements
+    two_pointer_techniques -> PairWithGivenSumInASortedArrayOfUniqueIntegers
+    two_pointer_techniques -> PairWithGivenSumInASortedArrayOfNonUniqueIntegers
 }
