@@ -27,11 +27,12 @@ strict digraph {
     integer_indexing [label="index nonscalar with integer\nnonscalar[i]" href="" target="_blank" fontcolor="blue"]
     IsTheStringAPalindrome [label="Is the string a palindrome" href="./dsa/IsTheStringAPalindrome/problem.html" target="_blank" fontcolor="blue"]
     IsTheStringAPalindromeIgnoringCaseAndWhiteSpace [label="Is the string a palindrome ignoring case and whitespace" href="./dsa/IsTheStringAPalindromeIgnoringCaseAndWhiteSpace/problem.html" target="_blank" fontcolor="blue"]
-    IsTheStringAPalindromeIgnoringNonAlphanumeric [label="Is the string a palindrome ignoring non-alphameric characters" href="./dsa/IsTheStringAPalindromeIgnoringNonAlphaNumeric/problem.html" target="_blank" fontcolor="blue"]
+    IsTheStringAPalindromeIgnoringNonAlphanumeric [label="Is the string a palindrome ignoring non-alphanumeric characters" href="./dsa/IsTheStringAPalindromeIgnoringNonAlphaNumeric/problem.html" target="_blank" fontcolor="blue"]
     list_integer_indexing [label="index list with integer\nsome_list[i]" href="" target="_blank" fontcolor="blue"]
     list_variable [label="use list variable" href="" target="_blank" fontcolor="blue"]
     one_pointer_techniques [label="One Pointer Techniques" href="" target="_blank" fontcolor="blue"]
-    PairWithGivenSumInASortedArray [label="Pair with given sum in a sorted array" href="./dsa/PairWithGivenSumInASortedArray/problem.html" target="_blank" fontcolor="blue"]
+    PairWithGivenSumInASortedArrayNonUniqueElements [label="Pair with given sum in a sorted array with non unique elements" href="./dsa/PairWithGivenSumInASortedArrayNonUniqueElements/problem.html" target="_blank" fontcolor="blue"]
+    PairWithGivenSumInASortedArrayUniqueElements [label="Pair with given sum in a sorted array with unique elements" href="./dsa/PairWithGivenSumInASortedArrayUniqueElements/problem.html" target="_blank" fontcolor="blue"]
     pointers_move_in_opposite_directions [label="Pointers move in opposite directions" href="" target="_blank" fontcolor="blue"]
     ReverseTheArray [label="Reverse The Array" href="./dsa/ReverseTheArray/problem.html" target="_blank" fontcolor="blue"]
     ReverseTheString [label="Reverse The String" href="./dsa/ReverseTheString/problem.html" target="_blank" fontcolor="blue"]
@@ -52,7 +53,6 @@ strict digraph {
     integer_indexing -> two_pointer_techniques
     integer_indexing -> two_pointer_techniques
     integer_indexing -> DeleteFewestCharactersFromStringToGetPalindrome
-    integer_indexing -> FindTripletsSummingToZero
     integer_variable -> integer_indexing
     integer_variable -> list_integer_indexing
     integer_variable -> string_integer_indexing
@@ -63,8 +63,10 @@ strict digraph {
     list_variable -> list_integer_indexing
     list_integer_indexing -> integer_indexing
     list_integer_indexing -> integer_indexing
-    one_pointer_techniques -> FindTheMinimum
     one_pointer_techniques -> BubbleSort
+    one_pointer_techniques -> FindTheMinimum
+    one_pointer_techniques -> FindTripletsSummingToZero
+    PairWithGivenSumInASortedArrayNonUniqueElements -> FindTripletsSummingToZero
     pointers_move_in_opposite_directions -> IsTheStringAPalindrome
     pointers_move_in_opposite_directions -> ReverseTheArray
     pointers_move_in_opposite_directions -> ReverseTheString
@@ -76,4 +78,6 @@ strict digraph {
     SwapTwoVariables -> ReverseTheArray
     SwapTwoVariables -> ReverseTheString
     two_pointer_techniques -> pointers_move_in_opposite_directions
+    two_pointer_techniques -> PairWithGivenSumInASortedArrayUniqueElements
+    two_pointer_techniques -> PairWithGivenSumInASortedArrayNonUniqueElements
 }
