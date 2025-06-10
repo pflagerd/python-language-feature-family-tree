@@ -38,6 +38,7 @@ strict digraph {
     PairWithGivenSumInASortedArrayOfUniqueIntegers [label="Pair with given sum in a sorted array with unique elements" href="./dsa/PairWithGivenSumInASortedArrayOfUniqueIntegers/problem.html" target="_blank" fontcolor="blue"]
     pointers_move_in_opposite_directions [label="Pointers move in opposite directions" href="" target="_blank" fontcolor="blue"]
     pointers_move_in_the_same_direction [label="Pointers move in the same direction" href="" target="_blank" fontcolor="blue"]
+    RemoveTheNthNodeFromTheEndOfASinglyLinkedList [ label="Remove the Nth Node From the End Of a Singly Linked List" ]
     ReverseTheArray [label="Reverse The Array" href="./dsa/ReverseTheArray/problem.html" target="_blank" fontcolor="blue"]
     ReverseTheString [label="Reverse The String" href="./dsa/ReverseTheString/problem.html" target="_blank" fontcolor="blue"]
     SwapTwoVariables [label="Swap Two Variables" href="./dsa/SwapTwoVariables/problem.html" target="_blank" fontcolor="blue"]
