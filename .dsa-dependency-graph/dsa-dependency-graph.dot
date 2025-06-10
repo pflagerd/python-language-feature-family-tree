@@ -16,6 +16,9 @@ strict digraph {
 #    builtin_scalar_literal_None [label="None"]
 #    builtin_map_type [label="map"]
 #    builtin_set_type [label="set"]
+    builtin_set_create_empty [label="create empty set\nset()"]
+    builtin_set_add [label="add element to set\nsomeset.add(element)"]
+    builtin_set_in [label="element in someset\n(-1, 0, 1) in outerTriplets"]
     BubbleSort
     ConvertStringToList [label="Convert a String to a list" href="https://docs.python.org/3/reference/lexical_analysis.html#numeric-literals" target="_blank" fontcolor="blue"]
 #    complex [label="complex"]
@@ -34,6 +37,7 @@ strict digraph {
     PairWithGivenSumInASortedArrayOfNonUniqueIntegers [label="Pair with given sum in a sorted array with non unique elements" href="./dsa/PairWithGivenSumInASortedArrayOfNonUniqueIntegers/problem.html" target="_blank" fontcolor="blue"]
     PairWithGivenSumInASortedArrayOfUniqueIntegers [label="Pair with given sum in a sorted array with unique elements" href="./dsa/PairWithGivenSumInASortedArrayOfUniqueIntegers/problem.html" target="_blank" fontcolor="blue"]
     pointers_move_in_opposite_directions [label="Pointers move in opposite directions" href="" target="_blank" fontcolor="blue"]
+    pointers_move_in_the_same_direction [label="Pointers move in the same direction" href="" target="_blank" fontcolor="blue"]
     ReverseTheArray [label="Reverse The Array" href="./dsa/ReverseTheArray/problem.html" target="_blank" fontcolor="blue"]
     ReverseTheString [label="Reverse The String" href="./dsa/ReverseTheString/problem.html" target="_blank" fontcolor="blue"]
     SwapTwoVariables [label="Swap Two Variables" href="./dsa/SwapTwoVariables/problem.html" target="_blank" fontcolor="blue"]
@@ -44,9 +48,12 @@ strict digraph {
     string_variable [label="use string variable" href="" target="_blank" fontcolor="blue"]
     two_pointer_techniques [label="Two Pointer Techniques" href="" target="_blank" fontcolor="blue"]
 
-    construct_list_from_string -> ConvertStringToList
+    builtin_set_create_empty -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
+    builtin_set_add -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
+    builtin_set_in -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
     builtin_function_print -> HelloWorld
     builtin_nonscalar_literal_unmodified_string -> HelloWorld
+    construct_list_from_string -> ConvertStringToList
     ConvertStringToList -> DeleteFewestCharactersFromStringToGetPalindrome
     ConvertStringToList -> ReverseTheString
     integer_indexing -> one_pointer_techniques
@@ -63,13 +70,15 @@ strict digraph {
     list_variable -> list_integer_indexing
     list_integer_indexing -> integer_indexing
     list_integer_indexing -> integer_indexing
-    one_pointer_techniques -> BubbleSort
     one_pointer_techniques -> FindTheMinimum
     one_pointer_techniques -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
     PairWithGivenSumInASortedArrayOfNonUniqueIntegers -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
     pointers_move_in_opposite_directions -> IsTheStringAPalindrome
     pointers_move_in_opposite_directions -> ReverseTheArray
     pointers_move_in_opposite_directions -> ReverseTheString
+    pointers_move_in_opposite_directions -> PairWithGivenSumInASortedArrayOfUniqueIntegers
+    pointers_move_in_opposite_directions -> PairWithGivenSumInASortedArrayOfNonUniqueIntegers
+    pointers_move_in_the_same_direction -> BubbleSort
     string_dot_isalpha -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
     string_dot_lower -> IsTheStringAPalindromeIgnoringCaseAndWhiteSpace
     string_dot_lower -> one_IsTheStringAPalindromeIgnoringCaseAndNonAlphanumeric
@@ -78,7 +87,7 @@ strict digraph {
     string_variable -> string_integer_indexing
     SwapTwoVariables -> ReverseTheArray
     SwapTwoVariables -> ReverseTheString
+    SwapTwoVariables -> BubbleSort
     two_pointer_techniques -> pointers_move_in_opposite_directions
-    two_pointer_techniques -> PairWithGivenSumInASortedArrayOfUniqueIntegers
-    two_pointer_techniques -> PairWithGivenSumInASortedArrayOfNonUniqueIntegers
+    two_pointer_techniques -> pointers_move_in_the_same_direction
 }
