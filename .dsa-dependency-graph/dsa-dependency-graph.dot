@@ -9,6 +9,7 @@ strict digraph {
     construct_list_from_string [label="constuct list from string\nlist(some_string)" href="https://docs.python.org/3/library/stdtypes.html#list" target="_blank" fontcolor="blue"]
     builtin_function_print [label="print()" href="https://docs.python.org/3/library/stdtypes.html#list" target="_blank" fontcolor="blue"]
     integer_variable [label="use integer variable" href="" target="_blank" fontcolor="blue"]
+    builtin_list_sort [label="sort list in place\nsort(list)"]
     builtin_nonscalar_literal_unmodified_string [label="construct a simple string literal\n\n'escaped characters' or\n\"escaped characters\""]
 #    builtin_scalar_literal_bool [label="bool literal"]
 #    builtin_scalar_literal_numeric_float [label="float literal" href="https://docs.python.org/3/reference/lexical_analysis.html#floating-point-literals" target="_blank" fontcolor="blue"]
@@ -49,6 +50,7 @@ strict digraph {
     string_variable [label="use string variable" href="" target="_blank" fontcolor="blue"]
     two_pointer_techniques [label="Two Pointer Techniques" href="" target="_blank" fontcolor="blue"]
 
+    builtin_list_sort -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
     builtin_set_create_empty -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
     builtin_set_add -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
     builtin_set_in -> FindTripletsSummingToZeroInArrayOfNonUniqueIntegers
